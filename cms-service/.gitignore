@@ -41,3 +41,7 @@ docs/
 # Ignore specific files or directories
 example.txt
 example_directory/
+
+# Ignore package lock files
+package-lock.json
+yarn.lock

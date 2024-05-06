@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  cms-service:
+    build:
+      context: ./cms-service 
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3001
+    command: ./docker-entrypoint.sh
+
+  learner-service:
+    build:
+      context: ./learner-service
+      dockerfile: Dockerfile
+    ports:
+      - 3002:3002
+    command: ./docker-entrypoint.sh
+
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - cms-service
+      - learner-service
+
+  db:
+    image: mongo:4.0-xenial
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db
+    
+volumes:
+  data: 
+    

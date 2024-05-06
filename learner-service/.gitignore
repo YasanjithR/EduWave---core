@@ -33,3 +33,7 @@ Thumbs.db
 # Ignore backup files
 *.bak
 *.swp
+
+# Ignore package lock files
+package-lock.json
+yarn.lock

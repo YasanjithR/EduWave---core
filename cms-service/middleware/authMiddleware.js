@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const Superior = require('../models/superior');
 
 exports.authenticateJWT = (req, res, next) => {
   const token = req.headers['x-access-token'];
@@ -8,23 +8,23 @@ exports.authenticateJWT = (req, res, next) => {
   jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
     if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
 
-    const user = await User.findById(decoded.id);
-    if (!user) return res.status(404).send('No user found.');
+    const superior = await Superior.findById(decoded.id);
+    if (!superior) return res.status(404).send('No superior found.');
 
-    req.user = user;
+    req.superior = superior;
     next();
   });
 };
 
 exports.isInstructor = (req, res, next) => {
-  if (req.user.role !== 'Instructor') {
+  if (req.superior.role !== 'Instructor') {
     return res.status(403).send('Only instructors can perform this action.');
   }
   next();
 };
 
 exports.isAdmin = (req, res, next) => {
-    if (req.user.role !== 'Admin') {
+    if (req.superior.role !== 'Admin') {
       return res.status(403).send('Only admins can perform this action.');
     }
     next();
