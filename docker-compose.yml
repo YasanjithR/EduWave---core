@@ -7,6 +7,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3001:3001
+    environment:
+      DB_URL: mongodb://db/eduwave
+    env_file:
+      - .env
     command: ./docker-entrypoint.sh
 
   learner-service:
@@ -15,6 +19,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - 3002:3002
+    environment:
+      DB_URL: mongodb://db/eduwave
+    env_file:
+      - .env
     command: ./docker-entrypoint.sh
 
   api-gateway:
@@ -32,8 +40,8 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - ./data:/data/db
+      - eduwave:/data/db
     
 volumes:
-  data: 
+  eduwave: 
     
