@@ -28,7 +28,7 @@ exports.login = async (req, res) => {
       });
   
       console.log('User logged in:', superior);
-      res.status(200).send({ message: 'User logged in successfully', auth: true, token: token, email: superior.email });
+      res.status(200).send({ message: 'User logged in successfully', auth: true, token: token, email: superior.email, role: superior.role});
     } catch (err) {
       console.log('Error logging in:', err);
       res.status(500).send({ message: 'Error logging in', error: err });
