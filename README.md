@@ -28,7 +28,7 @@ docker-compose build --no-cache
 ```
 - then run the application by
 ```bashc 
-docker-compose up.
+docker-compose up
 ```
 
 ### Windows
@@ -40,7 +40,7 @@ docker-compose build --no-cache
 ```
 - then run the application by 
 ```bashc 
-docker-compose up.
+docker-compose up
 ```
 - Visit `http://localhost:3000`in your browser to access the application.
 
