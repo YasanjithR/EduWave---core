@@ -8,10 +8,10 @@ exports.register = async (req, res) => {
     const superior = new Superior({ username, password: bcrypt.hashSync(password, 8), email, role });
     await superior.save();
     console.log('User registered:', superior);
-    res.status(201).send(superior);
+    res.status(201).send({ message: 'User registered successfully', user: superior });
   } catch (err) {
     console.log('Error registering:', err);
-    res.status(500).send(err);
+    res.status(500).send({ message: 'Error registering user', error: err});
   }
 };
 
@@ -28,9 +28,9 @@ exports.login = async (req, res) => {
       });
   
       console.log('User logged in:', superior);
-      res.status(200).send({ auth: true, token: token });
+      res.status(200).send({ message: 'User logged in successfully', auth: true, token: token, email: superior.email });
     } catch (err) {
       console.log('Error logging in:', err);
-      res.status(500).send(err);
+      res.status(500).send({ message: 'Error logging in', error: err });
     }
   };

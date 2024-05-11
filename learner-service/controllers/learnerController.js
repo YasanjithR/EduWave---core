@@ -8,7 +8,7 @@ exports.register = async (req, res) => {
     const learner = new Learner({ username, password: bcrypt.hashSync(password, 8), email, role });
     await learner.save();
     console.log('User registered:', learner);
-    res.status(201).send(learner);
+    res.status(201).send({ message: 'User registered successfully', user: learner });
   } catch (err) {
     console.log('Error registering:', err);
     res.status(500).send(err);
@@ -28,7 +28,7 @@ exports.login = async (req, res) => {
       });
   
       console.log('User logged in:', learner);
-      res.status(200).send({ auth: true, token: token });
+      res.status(200).send({ message: 'User logged in successfully', auth: true, token: token, email: learner.email });
     } catch (err) {
       console.log('Error logging in:', err);
       res.status(500).send(err);
