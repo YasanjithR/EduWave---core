@@ -21,8 +21,8 @@ Before you begin, ensure you have met the following requirements:
 
 ### Mac
 
-Start MongoDB: `brew services start mongodb-community@7.0`.
-Build and start the Docker services: 
+- Start MongoDB: `brew services start mongodb-community@7.0`.
+- Build and start the Docker services: 
 ```bashc 
 docker-compose build --no-cache 
 ```
@@ -33,9 +33,8 @@ docker-compose up.
 
 ### Windows
 
-Start MongoDB: Navigate to your MongoDB installation folder and execute mongod.exe.
-Build and start the Docker services: 
-Build and start the Docker services: 
+- Start MongoDB: Navigate to your MongoDB installation folder and execute mongod.exe.
+- Build and start the Docker services: 
 ```bashc 
 docker-compose build --no-cache 
 ```
@@ -43,7 +42,7 @@ docker-compose build --no-cache
 ```bashc 
 docker-compose up.
 ```
-Visit `http://localhost:3000`in your browser to access the application.
+- Visit `http://localhost:3000`in your browser to access the application.
 
 ## Stopping the Application
 
@@ -56,7 +55,7 @@ For Mac, you can also stop the MongoDB service with `brew services stop mongodb-
 To contribute to EduWave, follow these steps:
 
 - Fork this repository.
-- Create a branch: git checkout -b <branch_name>.
-- Make your changes and commit them: git commit -m '<commit_message>'.
-- Push to the original branch: git push origin <project_name>/<location>.
+- Create a branch: `git checkout -b <branch_name>`.
+- Make your changes and commit them: `git commit -m '<commit_message>'`.
+- Push to the original branch: `git push origin <project_name>/<location>`.
 - Create the pull request.
