@@ -33,6 +33,10 @@ const CourseSchema = new mongoose.Schema({
             correct: Number
         }
     ],
+    thumbnail: {
+        type: String,
+        default: 'https://via.placeholder.com/150'
+    },
     approved: {
         type: Boolean,
         default: false

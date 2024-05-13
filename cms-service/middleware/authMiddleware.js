@@ -17,15 +17,17 @@ exports.authenticateJWT = (req, res, next) => {
 };
 
 exports.isInstructor = (req, res, next) => {
-  if (req.superior.role !== 'Instructor') {
+  const role = req.headers['x-user-role'];
+  if (role !== 'Instructor') {
     return res.status(403).send('Only instructors can perform this action.');
   }
   next();
 };
 
 exports.isAdmin = (req, res, next) => {
-    if (req.superior.role !== 'Admin') {
-      return res.status(403).send('Only admins can perform this action.');
-    }
-    next();
+  const role = req.headers['x-user-role'];
+  if (role !== 'Admin') {
+    return res.status(403).send('Only admins can perform this action.');
+  }
+  next();
 };
