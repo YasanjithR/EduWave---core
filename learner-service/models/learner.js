@@ -12,6 +12,10 @@ const LearnerSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true
+    },
+    mobile: {
+        type: String,
+        required: true
     }
 });
 
