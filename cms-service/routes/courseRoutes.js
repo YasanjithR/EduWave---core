@@ -10,6 +10,6 @@ router.put('/approve/:id', authMiddleware.authenticateJWT, authMiddleware.isAdmi
 router.get('/get/:id', authMiddleware.authenticateJWT, courseController.getCourse);
 router.get('/get', authMiddleware.authenticateJWT, courseController.getCourses);
 router.get('/get/instructor/:id', authMiddleware.authenticateJWT, authMiddleware.isInstructor, courseController.getCoursesByInstructor);
-router.get('/get/approved', authMiddleware.authenticateJWT, courseController.getApprovedCourses);
+router.get('/get/approved', courseController.getApprovedCourses);
 
 module.exports = router;
