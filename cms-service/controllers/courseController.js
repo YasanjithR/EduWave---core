@@ -88,3 +88,18 @@ exports.getCourses = async (req, res) => {
     });
   }
 };
+
+exports.getCoursesByInstructor = async (req, res) => {
+  try {
+    const instructor = await Instructor.findById(req.params.id);
+    if (!instructor) {
+      return res.status(404).send('Instructor not found');
+    }
+    const courses = await Course.find({ instructor: instructor._id }).populate('instructor', 'username -_id');
+    res.status(200).send({ message: 'Courses retrieved successfully', courses: courses });
+  } catch (err) {
+    res.status(500).send({
+      message: err.message || "Some error occurred while retrieving the courses."
+    });
+  }
+}

@@ -9,5 +9,6 @@ router.delete('/delete/:id', authMiddleware.authenticateJWT, authMiddleware.isIn
 router.put('/approve/:id', authMiddleware.authenticateJWT, authMiddleware.isAdmin, courseController.approveCourse);
 router.get('/get/:id', authMiddleware.authenticateJWT, courseController.getCourse);
 router.get('/get', authMiddleware.authenticateJWT, courseController.getCourses);
+router.get('/get/instructor/:id', authMiddleware.authenticateJWT, authMiddleware.isInstructor, courseController.getCoursesByInstructor);
 
 module.exports = router;
