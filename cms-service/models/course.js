@@ -40,6 +40,10 @@ const CourseSchema = new mongoose.Schema({
     approved: {
         type: Boolean,
         default: false
+    },
+    price: {
+        type: Number,
+        default: 0
     }
 });
 

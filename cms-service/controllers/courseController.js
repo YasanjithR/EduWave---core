@@ -103,3 +103,14 @@ exports.getCoursesByInstructor = async (req, res) => {
     });
   }
 }
+
+exports.getApprovedCourses = async (req, res) => {
+  try {
+    const courses = await Course.find({ approved: true }).populate('instructor', 'username -_id');
+    res.status(200).send({ message: 'Approved courses retrieved successfully', courses: courses });
+  } catch (err) {
+    res.status(500).send({
+      message: err.message || "Some error occurred while retrieving the courses."
+    });
+  }
+}

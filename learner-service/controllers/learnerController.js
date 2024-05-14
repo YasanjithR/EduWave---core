@@ -28,7 +28,7 @@ exports.login = async (req, res) => {
       });
   
       console.log('User logged in:', learner);
-      res.status(200).send({ message: 'User logged in successfully', auth: true, token: token, email: learner.email, role: learner.role});
+      res.status(200).send({ message: 'User logged in successfully', auth: true, token: token, email: learner.email, role: 'learner', _id: learner._id });
     } catch (err) {
       console.log('Error logging in:', err);
       res.status(500).send(err);

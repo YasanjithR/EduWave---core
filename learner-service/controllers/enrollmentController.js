@@ -45,7 +45,7 @@ exports.seeProgress = async (req, res) => {
 exports.seeAllprogress = async (req, res) => {
   try {
     const enrollments = await Enrollment.find({ learner: req.learner._id });
-    res.status(200).send({ message: 'Progress retrieved successfully', progress: enrollments });
+    res.status(200).send({ message: 'Progress retrieved successfully', courses: enrollments });
   } catch (err) {
     res.status(500).send({
       message: err.message || "Some error occurred while retrieving the progress."
