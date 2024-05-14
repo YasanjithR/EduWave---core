@@ -1,9 +1,9 @@
 const axios = require('axios');
 
 exports.sendSMS = async (req, res) => {
-  const { to } = req.body;
+  const to = req.body.mobile;
 
-  const message = req.body.message || 'You have successfully enrolled in a new course! Happy learning! ~ Team EduWave';
+  const message = 'You have successfully enrolled in a new course! Happy learning! ~ Team EduWave';
 
   try {
     const response = await axios.get(`https://app.notify.lk/api/v1/send`, {
@@ -11,8 +11,8 @@ exports.sendSMS = async (req, res) => {
         user_id: process.env.USER_ID,
         api_key: process.env.API_KEY,
         sender_id: process.env.SENDER_ID,
-        to,
-        message
+        to: to,
+        message: message
       }
     });
     res.json(response);
